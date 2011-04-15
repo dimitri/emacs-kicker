@@ -1,0 +1,51 @@
+= Emacs Kicker
+
+This repository contains a starter-kit for Emacs.  If you're new and want to
+try the editor with a easy setup, that's for you.
+
+== Install
+
+Here's how to:
+
+  REPO=~/dev/emacs.d
+  mkdir -p $REPO && cd ~/dev/emacs.d
+  git clone http://github.com/dimitri/emacs-kicker
+  mkdir -p ~/.emacs.d
+  ( cd ~/.emacs.d && ln -s $REPO/init.el . )
+  emacs
+
+The idea is to keep the git repository out of the way in some place of your
+own, then link it at the right place.
+
+== What's in there?
+
+Some selection of packages to have a nice +emacs+, some settings to disable
+the menu bar and the tool bar, and also the scroll bar, etc.  The visual
+improvements won't be such for everybody, don't hesitate reversing the
+defaults here.
+
+Of course if you do alter this file but still want to be able to git pull in
+the future, you'd better branch :)
+
+=== el-get
+
+The author of the +emacs-kicker+ is also the one of el-get, you won't be
+surprised that we're leveraging it here.
+
+=== packages
+
+A selection of packages have been selected for you, consider adapting it of
+course.
+
+=== manual steps
+
+Once the first startup is done, consider +M-x el-get-emacswiki-refresh+ so
+that you're able to easily install any package from +emacswiki+.
+
+== How to go from that?
+
+Just add the packages you want to try and need.  To do that, try +M-x
+el-get-install+ then +TAB+, and you will have a list
+
+It's possible that in the future this very simple emacs setup will somewhat
+grow into something a little more involved and use several files.
