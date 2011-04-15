@@ -1,6 +1,23 @@
-;; emacs setup
+;; emacs kicker --- kick start emacs setup
+;; Copyright (C) 2010 Dimitri Fontaine
+;;
+;; Author: Dimitri Fontaine <dim@tapoueh.org>
+;; URL: https://github.com/dimitri/emacs-kicker
+;; Created: 2011-04-15
+;; Keywords: emacs setup el-get kick-start starter-kit
+;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
+;;
+;; This file is NOT part of GNU Emacs.
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
+
 (require 'el-get)
 (setq
  el-get-sources
