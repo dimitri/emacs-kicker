@@ -11,8 +11,6 @@
    switch-window			; takes over C-x o
    auto-complete			; complete as you type with overlays
    emacs-goodies-el			; the debian addons for emacs
-   color-theme				; nice looking emacs
-   color-theme-tango			; check out color-theme-solarized
 
    yasnippet				; powerful snippet mode
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
@@ -39,26 +37,43 @@
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
 
+(require 'cl)				; common lisp goodies, loop
+(when (string-match "apple-darwin" system-configuration)
+  (loop for p in '(color-theme		; nice looking emacs
+		   color-theme-tango	; check out color-theme-solarized
+		   )
+	do (add-to-list 'el-get-sources p)))
+
 ;; install new packages and init already installed packages
 (el-get 'sync)
 
-;; visual settings
-(setq inhibit-splash-screen t)
-(menu-bar-mode 1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+;; on to the visual settings
+(setq inhibit-splash-screen t)		; no splash screen, thanks
+(line-number-mode 1)			; have line numbers and
+(column-number-mode 1)			; column numbers in the mode line
 
-(set-frame-font "Monospace-10")
+(tool-bar-mode -1)			; no tool bar with icons
+(scroll-bar-mode -1)			; no scroll bars
+(unless (string-match "apple-darwin" system-configuration)
+  ;; on mac, there's always a menu bar drown, don't have it empty
+  (menu-bar-mode -1))
 
-(global-hl-line-mode)
-(global-linum-mode 1)
+(set-frame-font "Monospace-10")		; largest possible
 
-;; when using a compiz manager, this seems sometimes needed
-;; consider adjusting also
+(global-hl-line-mode)			; highlight current line
+(global-linum-mode 1)			; add line numbers on the left
+
+;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
 
 ;; copy/paste with C-c and C-v and C-x, check out C-RET too
 (cua-mode)
+
+;; under mac, have Command as Meta and keep Option for localized input
+(when (string-match "apple-darwin" system-configuration)
+  (setq mac-allow-anti-aliasing t)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'none))
 
 ;; Use the clipboard, pretty please, so that copy/paste "works"
 (setq x-select-enable-clipboard t)
