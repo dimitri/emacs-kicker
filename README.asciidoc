@@ -22,6 +22,7 @@ http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html[the
 Emacs manual regarding init files] to insure that +$REPO/init.el+ will
 actually be loaded. 
 
+
 === Prerequisites
 
 Git must be installed and it is recommended to install CVS (concurrent
