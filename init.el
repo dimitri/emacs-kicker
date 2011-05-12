@@ -9,6 +9,8 @@
 ;;
 ;; This file is NOT part of GNU Emacs.
 
+(require 'cl)				; common lisp goodies, loop
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
@@ -18,18 +20,15 @@
      (end-of-buffer)
      (eval-print-last-sexp))))
 
-(require 'el-get)
+;; now either el-get is `require'd already, or have been `load'ed by the
+;; el-get installer.
 (setq
  el-get-sources
  '(el-get				; el-get is self-hosting
    escreen            			; screen for emacs, C-\ C-h
    php-mode-improved			; if you're into php...
-   psvn					; M-x svn-status
    switch-window			; takes over C-x o
    auto-complete			; complete as you type with overlays
-   emacs-goodies-el			; the debian addons for emacs
-
-   yasnippet				; powerful snippet mode
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
 
    (:name buffer-move			; have to add your own keys
@@ -54,10 +53,23 @@
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
 
-(require 'cl)				; common lisp goodies, loop
-(when (string-match "apple-darwin" system-configuration)
+(unless (string-match "apple-darwin" system-configuration)
   (loop for p in '(color-theme		; nice looking emacs
 		   color-theme-tango	; check out color-theme-solarized
+		   )
+	do (add-to-list 'el-get-sources p)))
+
+;;
+;; Some recipes require extra tools to be installed
+;;
+;; Note: el-get-install requires git, so we know we have at least that.
+;;
+(when (el-get-executable-find "cvs")
+  (add-to-list 'el-get-sources 'emacs-goodies-el)) ; the debian addons for emacs
+
+(when (el-get-executable-find "svn")
+  (loop for p in '(psvn    		; M-x svn-status
+		   yasnippet		; powerful snippet mode
 		   )
 	do (add-to-list 'el-get-sources p)))
 
