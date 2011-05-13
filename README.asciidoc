@@ -17,6 +17,17 @@ Here's how to:
 The idea is to keep the git repository out of the way in some place of your
 own, then link it at the right place.
 
+Please consult
+http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html[the
+Emacs manual regarding init files] to insure that +$REPO/init.el+ will
+actually be loaded. 
+
+
+=== Prerequisites
+
+Git must be installed and it is recommended to install CVS (concurrent
+version system) and SVN.  
+
 == What's in there?
 
 Some selection of packages to have a nice +emacs+, some settings to disable
