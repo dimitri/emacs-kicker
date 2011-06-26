@@ -13,7 +13,8 @@ Here's how to clone the project:
 
 If you just want to test it out:
 
-  /path/to/emacs -q -l $REPO/init.el
+  rm -rf /tmp/kicker && mkdir -p /tmp/kicker
+  HOME=/tmp/kicker /path/to/emacs -q -l $REPO/init.el
 
 To install:
 
