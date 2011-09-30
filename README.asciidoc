@@ -1,7 +1,9 @@
 = Emacs Kicker
 
 This repository contains a starter-kit for Emacs.  If you're new and want to
-try the editor with a easy setup, that's for you.
+try the editor with a easy setup, that's for you.  See
+http://tapoueh.org/blog/2011/04/15-emacs-kicker.html for a detailed
+introduction.
 
 == Install
 
