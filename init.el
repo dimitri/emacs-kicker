@@ -56,6 +56,7 @@
    php-mode-improved			; if you're into php...
    switch-window			; takes over C-x o
    auto-complete			; complete as you type with overlays
+   yasnippet 				; powerful snippet mode
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
    color-theme-tango))	                ; check out color-theme-solarized
@@ -70,7 +71,6 @@
 
 (when (el-get-executable-find "svn")
   (loop for p in '(psvn    		; M-x svn-status
-		   yasnippet		; powerful snippet mode
 		   )
 	do (add-to-list 'my:el-get-packages p)))
 
