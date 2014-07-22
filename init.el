@@ -156,6 +156,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
 (setq ido-show-dot-for-dired t)
+(setq ido-default-buffer-method 'selected-window)
 
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
@@ -165,6 +166,11 @@
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 (global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
 (global-set-key (kbd "C-x B") 'ibuffer)
+
+;; have vertical ido completion lists
+(setq ido-decorations
+      '("\n-> " "" "\n   " "\n   ..." "[" "]"
+	" [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]"))
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
