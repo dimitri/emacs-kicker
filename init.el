@@ -66,10 +66,10 @@
 ;;
 ;; Note: el-get-install requires git, so we know we have at least that.
 ;;
-(when (el-get-executable-find "cvs")
+(when (ignore-errors (el-get-executable-find "cvs"))
   (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
-(when (el-get-executable-find "svn")
+(when (ignore-errors (el-get-executable-find "svn"))
   (loop for p in '(psvn    		; M-x svn-status
 		   )
 	do (add-to-list 'my:el-get-packages p)))
